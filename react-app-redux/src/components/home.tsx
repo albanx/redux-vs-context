@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
+import { PrimaryButton } from "@fluentui/react/lib/Button";
+
 import logo from "../logo.svg";
 import { RootState } from "../store/store";
 import { addTodo } from "../store/todoSlice";
@@ -21,13 +23,13 @@ export const Home = () => {
           React with <code>REDUX</code> API.
         </p>
         <Title />
-        <button
+        <PrimaryButton
+          text="Add Todo"
           onClick={() =>
             dispatch(addTodo({ text: "New Todo", id: Math.random() + "" }))
           }
-        >
-          Add Todo
-        </button>
+          allowDisabledFocus
+        />
         <ul>
           {listTodos.map((todo, index) => (
             <TodoCmp key={todo.id} {...todo} />

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { PrimaryButton } from "@fluentui/react/lib/Button";
 import logo from "../logo.svg";
 import { MyAppContext } from "../store/context";
 import TodoCmp from "./todo";
@@ -16,16 +17,16 @@ export const Home = () => {
           React with <code>CONTEXT</code> API.
         </p>
         <Title />
-        <button
+        <PrimaryButton
+          text="Add Todo"
           onClick={() =>
             dispatch({
               type: "ADD_TODO",
               payload: { text: "New Todo", id: Math.random() + "" },
             })
           }
-        >
-          Add Todo
-        </button>
+          allowDisabledFocus
+        />
         <ul>
           {state.listTodos.map((todo, index) => (
             <TodoCmp key={todo.id} {...todo} />

@@ -1,4 +1,6 @@
 import { memo } from "react";
+import { DefaultButton } from "@fluentui/react/lib/Button";
+import { Stack } from "@fluentui/react";
 import { useDispatch } from "react-redux";
 import { removeTodo, showTodoID, Todo } from "../store/todoSlice";
 
@@ -8,8 +10,15 @@ export const TodoCmp = (todo: Todo) => {
   return (
     <li key={todo.id}>
       {todo.text}
-      <button onClick={() => dispatch(removeTodo(todo.id))}>Remove</button>
-      <button onClick={() => dispatch(showTodoID(todo.id))}>Show MY ID</button>
+      <Stack horizontal>
+        <DefaultButton
+          title="Remove"
+          onClick={() => dispatch(removeTodo(todo.id))}
+        />
+        <button onClick={() => dispatch(showTodoID(todo.id))}>
+          Show MY ID
+        </button>
+      </Stack>
     </li>
   );
 };
